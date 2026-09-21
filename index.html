@@ -4,788 +4,2506 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SOROAI — AI Tools, Automation & Growth</title>
-  <meta name="description" content="SOROAI helps you discover, create and grow with AI. Explore AI tools, generators, automation and the best AI services.">
-  <meta name="keywords" content="AI tools, AI generator, AI assistant, AI tools directory, AI automation">
+  <title>SOROAI — Earn with AI. Build Faster.</title>
 
-  <meta property="og:title" content="SOROAI — Earn with AI. Build Faster.">
-  <meta property="og:description" content="Discover AI tools, create faster and grow with SOROAI.">
-  <meta property="og:type" content="website">
+  <meta name="description"
+        content="SOROAI — Access 40+ AI tools to automate content, SEO, visuals and marketing.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#060D20",
+            gold: "#D4AF37",
+            goldLight: "#F9E79F"
+          },
+          boxShadow: {
+            gold: "0 0 25px rgba(212,175,55,0.18)",
+            goldStrong: "0 0 45px rgba(212,175,55,0.28)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+
+    /* =====================================================
+       BASE
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #060D20;
+      color: #fff;
+
+      overflow-x: hidden;
+    }
+
+    body.light {
+      background: #f5f6f8;
+      color: #111827;
+    }
+
+
+    /* =====================================================
+       GOLD GRADIENT
+    ===================================================== */
+
+    .gold-text {
+      background: linear-gradient(
+        110deg,
+        #D4AF37,
+        #F9E79F,
+        #D4AF37
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .gold-gradient {
+      background: linear-gradient(
+        110deg,
+        #D4AF37,
+        #F9E79F
+      );
+    }
+
+
+    /* =====================================================
+       CANVAS PARTICLES
+    ===================================================== */
+
+    #particleCanvas {
+      position: fixed;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      pointer-events: none;
+
+      z-index: 0;
+
+      opacity: .72;
+    }
+
+
+    /* =====================================================
+       ATMOSPHERIC GLOW
+    ===================================================== */
+
+    .ambient {
+      position: fixed;
+
+      width: 650px;
+      height: 650px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(212,175,55,.08),
+          rgba(212,175,55,0) 68%
+        );
+
+      pointer-events: none;
+
+      z-index: 0;
+
+      filter: blur(10px);
+
+      animation: ambientMove 14s ease-in-out infinite alternate;
+    }
+
+    .ambient.one {
+      top: -280px;
+      left: -240px;
+    }
+
+    .ambient.two {
+      right: -280px;
+      top: 35%;
+      animation-delay: -6s;
+    }
+
+    @keyframes ambientMove {
+
+      0% {
+        transform: translate3d(0,0,0) scale(1);
+      }
+
+      100% {
+        transform: translate3d(80px,40px,0) scale(1.15);
+      }
+
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT LAYER
+    ===================================================== */
+
+    .page-layer {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    /* =====================================================
+       GLASS
+    ===================================================== */
+
+    .glass {
+      background: rgba(255,255,255,.045);
+
+      border: 1px solid rgba(255,255,255,.10);
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .glass-heavy {
+      background: rgba(255,255,255,.065);
+
+      border: 1px solid rgba(255,255,255,.12);
+
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header {
+      position: sticky;
+      top: 0;
+
+      z-index: 100;
+
+      background: rgba(6,13,32,.72);
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      border-bottom: 1px solid rgba(212,175,55,.24);
+    }
+
+    body.light .header {
+      background: rgba(245,246,248,.78);
+      border-bottom-color: rgba(170,130,35,.25);
+    }
+
+    .header-inner {
+      width: min(1240px, calc(100% - 32px));
+
+      min-height: 76px;
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid #D4AF37;
+
+      border-radius: 50%;
+
+      color: #F9E79F;
+
+      font-weight: 800;
+      font-size: 15px;
+
+      box-shadow:
+        inset 0 0 12px rgba(212,175,55,.08),
+        0 0 18px rgba(212,175,55,.08);
+    }
+
+    .logo-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .07em;
+    }
+
+    .logo-name span:first-child {
+      color: #D4AF37;
+    }
+
+
+    /* =====================================================
+       NAV
+    ===================================================== */
+
+    .nav {
+      display: flex;
+      align-items: center;
+
+      gap: 25px;
+
+      margin-left: auto;
+    }
+
+    .nav a {
+      color: rgba(255,255,255,.62);
+
+      font-size: 12px;
+
+      transition: .25s ease;
+    }
+
+    .nav a:hover {
+      color: #F9E79F;
+    }
+
+
+    /* =====================================================
+       FLAGS
+    ===================================================== */
+
+    .flags {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      padding-right: 8px;
+
+      border-right: 1px solid rgba(255,255,255,.10);
+    }
+
+    .flag {
+      font-size: 13px;
+      filter: saturate(.9);
+      opacity: .82;
+    }
+
+
+    /* =====================================================
+       THEME TOGGLE
+    ===================================================== */
+
+    .theme-toggle {
+      width: 54px;
+      height: 28px;
+
+      position: relative;
+
+      border: 1px solid rgba(255,255,255,.15);
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,.05);
+
+      cursor: pointer;
+    }
+
+    .theme-knob {
+      position: absolute;
+
+      width: 22px;
+      height: 22px;
+
+      top: 2px;
+      left: 3px;
+
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      background: #D4AF37;
+
+      color: #060D20;
+
+      font-size: 11px;
+
+      transition: .3s ease;
+    }
+
+    body.light .theme-knob {
+      left: 27px;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 43px;
+
+      padding: 0 19px;
+
+      border-radius: 9px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-gold {
+      color: #171208;
+
+      background:
+        linear-gradient(
+          110deg,
+          #D4AF37,
+          #F9E79F
+        );
+
+      box-shadow:
+        0 8px 25px rgba(212,175,55,.15);
+    }
+
+    .btn-gold:hover {
+      box-shadow:
+        0 10px 35px rgba(212,175,55,.28);
+    }
+
+    .btn-outline {
+      color: #F9E79F;
+
+      border: 1px solid rgba(212,175,55,.5);
+
+      background: rgba(255,255,255,.025);
+    }
+
+    .btn-outline:hover {
+      border-color: #D4AF37;
+
+      box-shadow:
+        0 0 22px rgba(212,175,55,.12);
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      width: min(1240px, calc(100% - 32px));
+
+      margin: auto;
+
+      padding:
+        90px 0
+        95px;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, .95fr);
+
+      gap: 60px;
+
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 7px 11px;
+
+      border-radius: 999px;
+
+      border: 1px solid rgba(212,175,55,.20);
+
+      background: rgba(212,175,55,.045);
+
+      color: #D4AF37;
+
+      font-size: 9px;
+
+      letter-spacing: .15em;
+
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin-top: 22px;
+
+      max-width: 680px;
+
+      font-size:
+        clamp(48px, 6.3vw, 82px);
+
+      line-height: .98;
+
+      letter-spacing: -.065em;
+
+      font-weight: 800;
+    }
+
+    .hero-subtitle {
+      max-width: 630px;
+
+      margin-top: 24px;
+
+      color: rgba(255,255,255,.60);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+
+      gap: 11px;
+
+      margin-top: 30px;
+
+      flex-wrap: wrap;
+    }
+
+    .trust {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-top: 23px;
+
+      color: rgba(255,255,255,.45);
+
+      font-size: 10px;
+    }
+
+    .trust-star {
+      color: #D4AF37;
+    }
+
+
+    /* =====================================================
+       BEFORE AFTER CARD
+    ===================================================== */
+
+    .demo-card {
+      position: relative;
+
+      padding: 22px;
+
+      border-radius: 20px;
+
+      min-height: 390px;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.28),
+        inset 0 0 60px rgba(255,255,255,.018);
+    }
+
+    .demo-title {
+      color: rgba(255,255,255,.58);
+
+      font-size: 10px;
+
+      letter-spacing: .05em;
+    }
+
+    .demo-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        35px
+        1fr;
+
+      gap: 12px;
+
+      align-items: center;
+
+      margin-top: 20px;
+    }
+
+    .demo-label {
+      color: rgba(255,255,255,.50);
+
+      font-size: 9px;
+
+      margin-bottom: 8px;
+    }
+
+    .product-box {
+      position: relative;
+
+      height: 260px;
+
+      overflow: hidden;
+
+      border-radius: 13px;
+
+      border: 1px solid rgba(255,255,255,.10);
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(255,255,255,.06),
+          transparent 55%
+        ),
+        #091120;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+    }
+
+    .after-box {
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(212,175,55,.22),
+          transparent 48%
+        ),
+        #0a1221;
+    }
+
+
+    /* =====================================================
+       PERFUME BOTTLE
+    ===================================================== */
+
+    .perfume {
+      position: relative;
+
+      width: 90px;
+      height: 155px;
+
+      border-radius:
+        12px
+        12px
+        18px
+        18px;
+
+      background:
+        linear-gradient(
+          100deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.35),
+          rgba(255,255,255,.06)
+        );
+
+      border:
+        1px solid rgba(255,255,255,.28);
+
+      box-shadow:
+        inset -14px 0 25px rgba(0,0,0,.25),
+        0 15px 30px rgba(0,0,0,.3);
+    }
+
+    .perfume::before {
+      content: "";
+
+      position: absolute;
+
+      width: 45px;
+      height: 30px;
+
+      left: 22px;
+      top: -25px;
+
+      border-radius: 6px 6px 2px 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #595959,
+          #d5d5d5,
+          #555
+        );
+
+      border:
+        1px solid rgba(255,255,255,.25);
+    }
+
+    .perfume::after {
+      content: "SORO";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%,-50%);
+
+      font-size: 10px;
+
+      letter-spacing: .16em;
+
+      color: rgba(255,255,255,.38);
+    }
+
+    .luxury .perfume {
+      background:
+        linear-gradient(
+          100deg,
+          #6d4d0c,
+          #F9E79F 35%,
+          #D4AF37 58%,
+          #6b4b0a
+        );
+
+      border-color: rgba(249,231,159,.65);
+
+      box-shadow:
+        inset -14px 0 30px rgba(53,34,0,.35),
+        0 0 35px rgba(212,175,55,.22),
+        0 20px 45px rgba(0,0,0,.45);
+    }
+
+    .luxury .perfume::after {
+      color: #fff8d9;
+
+      text-shadow:
+        0 0 8px rgba(255,255,255,.35);
+    }
+
+    .luxury .perfume::before {
+      background:
+        linear-gradient(
+          90deg,
+          #9c7720,
+          #F9E79F,
+          #9b751c
+        );
+    }
+
+
+    /* =====================================================
+       SPARKLES
+    ===================================================== */
+
+    .sparkle {
+      position: absolute;
+
+      color: #F9E79F;
+
+      font-size: 17px;
+
+      animation:
+        sparkle 2.4s ease-in-out infinite;
+    }
+
+    .s1 {
+      top: 30%;
+      left: 18%;
+    }
+
+    .s2 {
+      top: 18%;
+      right: 19%;
+
+      animation-delay: .7s;
+    }
+
+    .s3 {
+      bottom: 25%;
+      right: 23%;
+
+      animation-delay: 1.2s;
+    }
+
+    .s4 {
+      bottom: 17%;
+      left: 25%;
+
+      animation-delay: 1.7s;
+    }
+
+    @keyframes sparkle {
+
+      0%,100% {
+        opacity: .2;
+        transform: scale(.7) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(20deg);
+      }
+
+    }
+
+
+    /* =====================================================
+       WATERMARK
+    ===================================================== */
+
+    .watermark {
+      position: absolute;
+
+      right: 9px;
+      bottom: 8px;
+
+      color: rgba(249,231,159,.48);
+
+      font-size: 7px;
+
+      letter-spacing: .08em;
+    }
+
+
+    /* =====================================================
+       CORE TOOLS
+    ===================================================== */
+
+    .section {
+      width: min(1240px, calc(100% - 32px));
+
+      margin: auto;
+
+      padding:
+        80px 0
+        90px;
+    }
+
+    .section-head {
+      margin-bottom: 35px;
+    }
+
+    .section-kicker {
+      color: #D4AF37;
+
+      font-size: 10px;
+
+      letter-spacing: .18em;
+
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin-top: 9px;
+
+      font-size:
+        clamp(28px, 4vw, 44px);
+
+      letter-spacing: -.045em;
+
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      margin-top: 8px;
+
+      max-width: 650px;
+
+      color: rgba(255,255,255,.45);
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       TOOL GRID
+    ===================================================== */
+
+    .tools-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+    }
+
+    .tool-card {
+      min-height: 205px;
+
+      padding: 23px;
+
+      border-radius: 16px;
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(212,175,55,.55);
+
+      box-shadow:
+        0 0 20px rgba(212,175,55,.20);
+    }
+
+    .tool-icon {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      color: #151004;
+
+      background:
+        linear-gradient(
+          135deg,
+          #D4AF37,
+          #F9E79F
+        );
+
+      box-shadow:
+        0 0 18px rgba(212,175,55,.14);
+
+      font-size: 15px;
+
+      margin-bottom: 27px;
+    }
+
+    .tool-title {
+      font-size: 14px;
+
+      font-weight: 700;
+    }
+
+    .tool-desc {
+      margin-top: 7px;
+
+      color: rgba(255,255,255,.48);
+
+      font-size: 11px;
+
+      line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       PRICING
+    ===================================================== */
+
+    .pricing-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      margin-bottom: 35px;
+    }
+
+    .pricing-head-right {
+      color: rgba(255,255,255,.42);
+
+      font-size: 10px;
+
+      max-width: 260px;
+
+      text-align: right;
+    }
+
+    .pricing-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+
+      padding: 27px;
+
+      min-height: 410px;
+
+      border-radius: 18px;
+    }
+
+    .price-card.popular {
+      border-color:
+        rgba(212,175,55,.50);
+
+      box-shadow:
+        0 0 35px rgba(212,175,55,.09);
+    }
+
+    .popular-badge {
+      position: absolute;
+
+      top: -12px;
+      right: 20px;
+
+      padding: 5px 10px;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          110deg,
+          #D4AF37,
+          #F9E79F
+        );
+
+      color: #161106;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      letter-spacing: .06em;
+    }
+
+    .seller-badge {
+      display: inline-flex;
+
+      padding: 5px 8px;
+
+      border-radius: 6px;
+
+      background: rgba(212,175,55,.08);
+
+      border: 1px solid rgba(212,175,55,.18);
+
+      color: #D4AF37;
+
+      font-size: 8px;
+
+      margin-bottom: 17px;
+    }
+
+    .price-name {
+      font-size: 15px;
+
+      font-weight: 700;
+    }
+
+    .price {
+      margin-top: 12px;
+
+      font-size: 50px;
+
+      font-weight: 800;
+
+      letter-spacing: -.06em;
+    }
+
+    .price span {
+      font-size: 19px;
+
+      vertical-align: top;
+
+      color: #D4AF37;
+    }
+
+    .price small {
+      color: rgba(255,255,255,.38);
+
+      font-size: 10px;
+
+      font-weight: 400;
+
+      letter-spacing: 0;
+    }
+
+    .price-desc {
+      color: rgba(255,255,255,.45);
+
+      font-size: 10px;
+
+      margin-top: 4px;
+    }
+
+    .features {
+      list-style: none;
+
+      margin-top: 25px;
+
+      display: grid;
+
+      gap: 11px;
+    }
+
+    .features li {
+      color: rgba(255,255,255,.60);
+
+      font-size: 10px;
+    }
+
+    .features li::before {
+      content: "✓";
+
+      color: #D4AF37;
+
+      margin-right: 8px;
+    }
+
+    .price-btn {
+      position: absolute;
+
+      left: 27px;
+      right: 27px;
+      bottom: 25px;
+
+      min-height: 40px;
+
+      border-radius: 8px;
+
+      font-size: 10px;
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+      border-top:
+        1px solid rgba(255,255,255,.08);
+
+      padding:
+        30px 16px;
+
+      color: rgba(255,255,255,.38);
+
+      font-size: 9px;
+    }
+
+    .footer-inner {
+      width: min(1240px, 100%);
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: #D4AF37;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    .mobile-button {
+      display: none;
+
+      width: 38px;
+      height: 38px;
+
+      border-radius: 9px;
+
+      border: 1px solid rgba(255,255,255,.12);
+
+      background: rgba(255,255,255,.04);
+
+      color: white;
+    }
+
+    .mobile-menu {
+      display: none;
+
+      border-top:
+        1px solid rgba(255,255,255,.08);
+
+      padding: 15px 16px;
+
+      background: rgba(6,13,32,.95);
+
+      backdrop-filter: blur(20px);
+    }
+
+    .mobile-menu.open {
+      display: grid;
+
+      gap: 5px;
+    }
+
+    .mobile-menu a {
+      padding: 11px;
+
+      color: rgba(255,255,255,.68);
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       LIGHT MODE
+    ===================================================== */
+
+    body.light #particleCanvas {
+      opacity: .25;
+    }
+
+    body.light .hero-subtitle,
+    body.light .section-subtitle,
+    body.light .tool-desc,
+    body.light .price-desc,
+    body.light .features li,
+    body.light .trust {
+      color: rgba(17,24,39,.55);
+    }
+
+    body.light .nav a {
+      color: rgba(17,24,39,.60);
+    }
+
+    body.light .glass {
+      background: rgba(255,255,255,.55);
+
+      border-color: rgba(17,24,39,.10);
+    }
+
+    body.light .mobile-menu {
+      background: rgba(245,246,248,.96);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .nav {
+        gap: 14px;
+      }
+
+      .flags {
+        display: none;
+      }
+
+      .hero-grid {
+        gap: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 850px) {
+
+      .nav {
+        display: none;
+      }
+
+      .mobile-button {
+        display: grid;
+        place-items: center;
+      }
+
+      .header-actions .btn {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        max-width: 700px;
+      }
+
+      .demo-card {
+        min-height: 350px;
+      }
+
+      .tools-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        min-height: 390px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .logo-name {
+        font-size: 16px;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+      }
+
+      .hero {
+        width: min(100% - 24px, 1240px);
+
+        padding-top: 50px;
+        padding-bottom: 60px;
+      }
+
+      .hero-title {
+        font-size: 48px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      .hero-buttons {
+        display: grid;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .demo-arrow {
+        transform: rotate(90deg);
+
+        margin: auto;
+      }
+
+      .product-box {
+        height: 210px;
+      }
+
+      .section {
+        width: min(100% - 24px, 1240px);
+
+        padding:
+          60px 0
+          65px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-head {
+        display: block;
+      }
+
+      .pricing-head-right {
+        margin-top: 10px;
+
+        text-align: left;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
 <!-- =====================================================
-     NAVBAR
+     BACKGROUND
 ===================================================== -->
 
-<header class="navbar">
-  <div class="nav-inner">
+<canvas id="particleCanvas"></canvas>
 
-    <a href="#home" class="brand">
-      <span class="brand-mark">S</span>
-      <span>SOROAI</span>
-    </a>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
 
-    <nav class="nav-links">
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<div class="page-layer">
+
+
+  <!-- ===================================================
+       HEADER
+  ==================================================== -->
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <a href="#" class="logo">
+
+        <div class="logo-mark">
+          SA
+        </div>
+
+        <div class="logo-name">
+          <span>SORO</span><span>AI</span>
+        </div>
+
+      </a>
+
+
+      <nav class="nav">
+
+        <div class="flags">
+          <span class="flag">🇺🇸</span>
+          <span class="flag">🇬🇧</span>
+          <span class="flag">🇮🇳</span>
+          <span class="flag">🇧🇩</span>
+          <span class="flag">🇮🇹</span>
+          <span class="flag">🇦🇪</span>
+          <span class="flag">🇦🇺</span>
+        </div>
+
+        <a href="#tools">Tools</a>
+
+        <a href="#pricing">Pricing</a>
+
+        <a href="#footer">About</a>
+
+      </nav>
+
+
+      <div class="header-actions flex items-center gap-2">
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-label="Toggle day and night mode">
+
+          <span
+            id="themeKnob"
+            class="theme-knob">
+            ☾
+          </span>
+
+        </button>
+
+
+        <button
+          class="btn btn-outline"
+          onclick="alert('Login system will be connected next.')">
+
+          Login
+
+        </button>
+
+
+        <button
+          class="btn btn-gold"
+          onclick="alert('Signup system will be connected next.')">
+
+          Get Started
+
+        </button>
+
+
+        <button
+          id="mobileButton"
+          class="mobile-button">
+
+          ☰
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="mobileMenu"
+      class="mobile-menu">
+
       <a href="#tools">Tools</a>
-      <a href="#earn">Earn with AI</a>
       <a href="#pricing">Pricing</a>
-      <a href="#blog">Blog</a>
-    </nav>
+      <a href="#footer">About</a>
 
-    <div class="nav-actions">
-
-      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
-        ◐
-      </button>
-
-      <button class="login-btn" onclick="openModal('loginModal')">
-        Login
-      </button>
-
-      <button class="primary-btn" onclick="openModal('signupModal')">
+      <a href="#hero">
         Get Started
-      </button>
-
-      <button id="mobileMenuBtn" class="mobile-menu-btn">
-        ☰
-      </button>
+      </a>
 
     </div>
 
-  </div>
-
-  <div id="mobileMenu" class="mobile-menu">
-    <a href="#tools">Tools</a>
-    <a href="#earn">Earn with AI</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#blog">Blog</a>
-    <button onclick="openModal('loginModal')">Login</button>
-    <button onclick="openModal('signupModal')">Get Started</button>
-  </div>
-</header>
+  </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+  <!-- ===================================================
+       HERO
+  ==================================================== -->
 
-<main id="home">
+  <main id="hero">
 
-<section class="hero">
+    <section class="hero">
 
-  <div class="hero-glow glow-one"></div>
-  <div class="hero-glow glow-two"></div>
+      <div class="hero-grid">
 
-  <div class="country-bar">
-    <span>🌐 All Countries</span>
-    <span>🇺🇸</span>
-    <span>🇬🇧</span>
-    <span>🇮🇳</span>
-    <span>🇧🇩</span>
-    <span>🇨🇦</span>
-    <span>🇦🇺</span>
-  </div>
 
-  <div class="hero-grid">
+        <!-- LEFT -->
 
-    <div class="hero-copy">
+        <div>
 
-      <div class="eyebrow">
-        ✦ AI TOOLS & GROWTH PLATFORM
+          <div class="hero-eyebrow">
+
+            ✦ AI TOOLS & GROWTH PLATFORM
+
+          </div>
+
+
+          <h1 class="hero-title">
+
+            Earn with
+            <span class="gold-text">
+              AI.
+            </span>
+
+            <br>
+
+            Build Faster.
+
+          </h1>
+
+
+          <p class="hero-subtitle">
+
+            Access 40+ AI tools to automate content, SEO,
+            visuals, and marketing — all in one platform.
+            Launch faster, rank higher, and scale your
+            earnings with SOROAI.
+
+          </p>
+
+
+          <div class="hero-buttons">
+
+            <a
+              href="#tools"
+              class="btn btn-gold">
+
+              Explore 40+ Tools →
+
+            </a>
+
+
+            <a
+              href="#pricing"
+              class="btn btn-outline">
+
+              SEO tool pages
+
+            </a>
+
+          </div>
+
+
+          <div class="trust">
+
+            <span class="trust-star">
+              ★
+            </span>
+
+            Trusted by 40,000+ creators worldwide
+
+            <span>•</span>
+
+            <span class="trust-star">
+              4.9★
+            </span>
+
+            average rating
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div
+          class="demo-card glass-heavy">
+
+          <div class="demo-title">
+
+            Before / After · Image Generator Demo
+
+          </div>
+
+
+          <div class="demo-grid">
+
+
+            <!-- BEFORE -->
+
+            <div>
+
+              <div class="demo-label">
+                Raw Product Photo
+              </div>
+
+              <div class="product-box">
+
+                <div class="perfume"></div>
+
+                <span class="watermark">
+                  SOROAI
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- ARROW -->
+
+            <div
+              class="demo-arrow flex justify-center">
+
+              <div
+                class="
+                  w-9 h-9
+                  rounded-full
+                  border
+                  border-[#D4AF37]/50
+                  flex
+                  items-center
+                  justify-center
+                  text-[#F9E79F]
+                  text-xs
+                ">
+
+                ✦
+
+              </div>
+
+            </div>
+
+
+            <!-- AFTER -->
+
+            <div class="luxury">
+
+              <div class="demo-label">
+                AI Enhanced
+              </div>
+
+              <div class="product-box after-box">
+
+                <div class="perfume"></div>
+
+
+                <span class="sparkle s1">
+                  ✦
+                </span>
+
+                <span class="sparkle s2">
+                  ✧
+                </span>
+
+                <span class="sparkle s3">
+                  ✦
+                </span>
+
+                <span class="sparkle s4">
+                  ✧
+                </span>
+
+
+                <span class="watermark">
+                  SA · SOROAI
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <h1>
-        Earn with AI.<br>
-        <span>Build Faster.</span>
-      </h1>
+    </section>
 
-      <p>
-        Discover powerful AI tools, create content, automate work,
-        and find the right AI solution for your next idea.
-      </p>
 
-      <div class="hero-buttons">
-        <a href="#tools" class="gold-btn">
-          Explore AI Tools →
+    <!-- =================================================
+         CORE AI TOOLS
+    ================================================== -->
+
+    <section
+      id="tools"
+      class="section">
+
+      <div class="section-head">
+
+        <div class="section-kicker">
+          CORE AI TOOLS
+        </div>
+
+        <h2 class="section-title">
+          Everything you need to build with AI.
+        </h2>
+
+        <p class="section-subtitle">
+
+          Powerful tools for content, SEO, visuals,
+          research and marketing — connected in one
+          premium AI workspace.
+
+        </p>
+
+      </div>
+
+
+      <div class="tools-grid">
+
+
+        <!-- 1 -->
+
+        <article class="tool-card glass">
+
+          <div class="tool-icon">
+            ✎
+          </div>
+
+          <h3 class="tool-title">
+            AI Writer
+          </h3>
+
+          <p class="tool-desc">
+
+            Write blogs, ads, captions and marketing
+            content in seconds.
+
+          </p>
+
+        </article>
+
+
+        <!-- 2 -->
+
+        <article class="tool-card glass">
+
+          <div class="tool-icon">
+            ◇
+          </div>
+
+          <h3 class="tool-title">
+            SEO Analyzer
+          </h3>
+
+          <p class="tool-desc">
+
+            Audit your website and discover
+            opportunities to improve search visibility.
+
+          </p>
+
+        </article>
+
+
+        <!-- 3 -->
+
+        <article class="tool-card glass">
+
+          <div class="tool-icon">
+            ◉
+          </div>
+
+          <h3 class="tool-title">
+            Image Generator
+          </h3>
+
+          <p class="tool-desc">
+
+            Turn simple prompts into creative
+            visuals and marketing images.
+
+          </p>
+
+        </article>
+
+
+        <!-- 4 -->
+
+        <article class="tool-card glass">
+
+          <div class="tool-icon">
+            ▶
+          </div>
+
+          <h3 class="tool-title">
+            Video Script
+          </h3>
+
+          <p class="tool-desc">
+
+            Generate hooks, scripts and ideas for
+            YouTube, Shorts, Reels and TikTok.
+
+          </p>
+
+        </article>
+
+
+        <!-- 5 -->
+
+        <article class="tool-card glass">
+
+          <div class="tool-icon">
+            ⌕
+          </div>
+
+          <h3 class="tool-title">
+            Keyword Research
+          </h3>
+
+          <p class="tool-desc">
+
+            Find useful keywords, search intent
+            and content opportunities.
+
+          </p>
+
+        </article>
+
+
+        <!-- 6 -->
+
+        <article class="tool-card glass">
+
+          <div class="tool-icon">
+            @
+          </div>
+
+          <h3 class="tool-title">
+            Email Campaign
+          </h3>
+
+          <p class="tool-desc">
+
+            Build engaging email campaigns,
+            sequences and marketing ideas.
+
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PRICING
+    ================================================== -->
+
+    <section
+      id="pricing"
+      class="section">
+
+
+      <div class="pricing-head">
+
+        <div>
+
+          <div class="section-kicker">
+            PRICING PLANS
+          </div>
+
+          <h2 class="section-title">
+            Simple. Transparent. Powerful.
+          </h2>
+
+        </div>
+
+
+        <div class="pricing-head-right">
+
+          Choose the plan that fits your
+          AI workflow and growth goals.
+
+        </div>
+
+      </div>
+
+
+      <div class="pricing-grid">
+
+
+        <!-- STARTER -->
+
+        <article class="price-card glass">
+
+          <div class="seller-badge">
+            STARTER
+          </div>
+
+          <h3 class="price-name">
+            Starter
+          </h3>
+
+
+          <div class="price">
+
+            <span>$</span>19
+
+            <small>
+              /month
+            </small>
+
+          </div>
+
+
+          <p class="price-desc">
+            For creators starting with AI.
+          </p>
+
+
+          <ul class="features">
+
+            <li>
+              10 AI tools
+            </li>
+
+            <li>
+              5,000 credits
+            </li>
+
+            <li>
+              Basic AI generation
+            </li>
+
+            <li>
+              Standard support
+            </li>
+
+          </ul>
+
+
+          <button
+            class="price-btn btn-outline">
+
+            Choose Starter
+
+          </button>
+
+        </article>
+
+
+        <!-- PRO -->
+
+        <article
+          class="price-card glass popular">
+
+          <div class="popular-badge">
+            MOST POPULAR
+          </div>
+
+          <div class="seller-badge">
+            POWERED WITH WRITESONIC
+          </div>
+
+          <h3 class="price-name">
+            Pro
+          </h3>
+
+
+          <div class="price">
+
+            <span>$</span>49
+
+            <small>
+              /month
+            </small>
+
+          </div>
+
+
+          <p class="price-desc">
+            For serious creators and businesses.
+          </p>
+
+
+          <ul class="features">
+
+            <li>
+              40+ AI tools
+            </li>
+
+            <li>
+              50,000 credits
+            </li>
+
+            <li>
+              Before / After generation
+            </li>
+
+            <li>
+              Priority processing
+            </li>
+
+            <li>
+              Premium workflows
+            </li>
+
+          </ul>
+
+
+          <button
+            class="price-btn btn-gold">
+
+            Choose Pro
+
+          </button>
+
+        </article>
+
+
+        <!-- AGENCY -->
+
+        <article class="price-card glass">
+
+          <div class="seller-badge">
+            BEST SELLER · 50% COMMISSION
+          </div>
+
+          <h3 class="price-name">
+            Agency
+          </h3>
+
+
+          <div class="price">
+
+            <span>$</span>350
+
+            <small>
+              /month
+            </small>
+
+          </div>
+
+
+          <p class="price-desc">
+            For agencies and high-volume teams.
+          </p>
+
+
+          <ul class="features">
+
+            <li>
+              Unlimited AI tools
+            </li>
+
+            <li>
+              Unlimited workflows
+            </li>
+
+            <li>
+              Commercial usage
+            </li>
+
+            <li>
+              Priority support
+            </li>
+
+            <li>
+              Agency-ready workspace
+            </li>
+
+          </ul>
+
+
+          <button
+            class="price-btn btn-outline">
+
+            Contact Sales
+
+          </button>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ===================================================
+       FOOTER
+  ==================================================== -->
+
+  <footer
+    id="footer"
+    class="footer">
+
+    <div class="footer-inner">
+
+      <div>
+
+        © 2024 SOROAI
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#">
+          Privacy
         </a>
 
-        <a href="#earn" class="dark-outline-btn">
-          Earn with AI ↗
+        <a href="#">
+          Terms
         </a>
-      </div>
 
-      <div class="trust-line">
-        Trusted by creators, entrepreneurs & digital builders.
+        <a href="#">
+          Support
+        </a>
+
+        <a href="mailto:help@soroai.com">
+          help@soroai.com
+        </a>
+
       </div>
 
     </div>
 
+  </footer>
 
-    <!-- BEFORE AFTER -->
-
-    <div class="before-after-card">
-
-      <div class="card-label">
-        Before → After | Image Generator Demo
-      </div>
-
-      <div class="before-after">
-
-        <div class="demo-side">
-          <span>Before</span>
-          <div class="fake-image before-image">
-            <div class="bottle"></div>
-          </div>
-        </div>
-
-        <div class="arrow-circle">
-          ✦
-        </div>
-
-        <div class="demo-side">
-          <span>After</span>
-          <div class="fake-image after-image">
-            <div class="s-logo">S</div>
-            <small>Made with SOROAI</small>
-          </div>
-        </div>
-
-      </div>
-
-      <button class="share-demo-btn" onclick="shareContent('SOROAI Image Generator Demo')">
-        Share on X ↗
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- ONE BOX -->
-
-  <div class="one-box">
-
-    <div class="one-box-top">
-      <span class="one-box-label">SOROAI ONE BOX</span>
-      <span class="online-dot">● Online</span>
-    </div>
-
-    <h2>Tell us. We'll figure it out.</h2>
-
-    <p>
-      Describe what you need and SOROAI will help you find the right AI tool.
-    </p>
-
-    <div class="one-box-input">
-
-      <input
-        id="toolSearch"
-        type="text"
-        placeholder="I need a logo maker..."
-        onkeydown="if(event.key==='Enter')findTool()"
-      >
-
-      <button onclick="findTool()">
-        Find Tool →
-      </button>
-
-    </div>
-
-    <div id="finderResult" class="finder-result"></div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     TOOLS
-===================================================== -->
-
-<section id="tools" class="section">
-
-  <div class="section-heading">
-    <div>
-      <span class="section-kicker">POPULAR TOOLS</span>
-      <h2>AI tools that do the work.</h2>
-    </div>
-
-    <a href="#all-tools" class="view-all">
-      View all tools →
-    </a>
-  </div>
-
-
-  <div class="tools-grid">
-
-    <article class="tool-card">
-      <div class="tool-icon">✍</div>
-      <h3>AI Writer</h3>
-      <p>Write blogs, ads, captions and content in seconds.</p>
-      <a href="/tools/ai-writer">Open Tool →</a>
-    </article>
-
-    <article class="tool-card">
-      <div class="tool-icon">⌁</div>
-      <h3>SEO Analyzer</h3>
-      <p>Audit a website and discover SEO opportunities.</p>
-      <a href="/tools/seo-analyzer">Open Tool →</a>
-    </article>
-
-    <article class="tool-card">
-      <div class="tool-icon">◈</div>
-      <h3>Image Generator</h3>
-      <p>Create images from simple text prompts.</p>
-      <a href="/tools/image-generator">Open Tool →</a>
-    </article>
-
-    <article class="tool-card">
-      <div class="tool-icon">▶</div>
-      <h3>Video Script</h3>
-      <p>Generate engaging scripts for short videos.</p>
-      <a href="/tools/video-script">Open Tool →</a>
-    </article>
-
-    <article class="tool-card">
-      <div class="tool-icon">⌕</div>
-      <h3>Keyword Research</h3>
-      <p>Find profitable keywords and content ideas.</p>
-      <a href="/tools/keyword-research">Open Tool →</a>
-    </article>
-
-    <article class="tool-card">
-      <div class="tool-icon">✉</div>
-      <h3>Email Campaign</h3>
-      <p>Create better emails and campaign ideas.</p>
-      <a href="/tools/email-campaign">Open Tool →</a>
-    </article>
-
-  </div>
-
-  <div class="more-tools">
-    +34 more tools available →
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     EARN WITH AI
-===================================================== -->
-
-<section id="earn" class="section earn-section">
-
-  <div class="section-heading center-heading">
-    <span class="section-kicker">AFFILIATE STORE</span>
-    <h2>Earn with AI.</h2>
-    <p>
-      Recommend useful AI products and earn recurring commissions.
-    </p>
-  </div>
-
-
-  <div class="affiliate-grid">
-
-    <article class="affiliate-card">
-      <div class="affiliate-top">
-        <span class="affiliate-logo">J</span>
-        <span class="commission">30%</span>
-      </div>
-
-      <h3>Jasper</h3>
-
-      <p>
-        AI platform for marketing, content and business teams.
-      </p>
-
-      <div class="affiliate-note">
-        Example commission
-      </div>
-
-      <a
-        href="YOUR_JASPER_AFFILIATE_LINK"
-        target="_blank"
-        rel="nofollow sponsored"
-        class="affiliate-btn"
-      >
-        Try Jasper →
-      </a>
-    </article>
-
-
-    <article class="affiliate-card">
-      <div class="affiliate-top">
-        <span class="affiliate-logo">W</span>
-        <span class="commission">30%</span>
-      </div>
-
-      <h3>Writesonic</h3>
-
-      <p>
-        AI writing and marketing platform for modern businesses.
-      </p>
-
-      <div class="affiliate-note">
-        Example commission
-      </div>
-
-      <a
-        href="YOUR_WRITESONIC_AFFILIATE_LINK"
-        target="_blank"
-        rel="nofollow sponsored"
-        class="affiliate-btn"
-      >
-        Try Writesonic →
-      </a>
-    </article>
-
-
-    <article class="affiliate-card">
-      <div class="affiliate-top">
-        <span class="affiliate-logo">P</span>
-        <span class="commission">50%</span>
-      </div>
-
-      <h3>Pictory</h3>
-
-      <p>
-        Turn text and ideas into engaging AI-powered videos.
-      </p>
-
-      <div class="affiliate-note">
-        Example commission
-      </div>
-
-      <a
-        href="YOUR_PICTORY_AFFILIATE_LINK"
-        target="_blank"
-        rel="nofollow sponsored"
-        class="affiliate-btn"
-      >
-        Try Pictory →
-      </a>
-    </article>
-
-
-    <article class="affiliate-card">
-      <div class="affiliate-top">
-        <span class="affiliate-logo">M</span>
-        <span class="commission">20%</span>
-      </div>
-
-      <h3>Murf</h3>
-
-      <p>
-        Create professional AI voiceovers for videos and content.
-      </p>
-
-      <div class="affiliate-note">
-        Example commission
-      </div>
-
-      <a
-        href="YOUR_MURF_AFFILIATE_LINK"
-        target="_blank"
-        rel="nofollow sponsored"
-        class="affiliate-btn"
-      >
-        Try Murf →
-      </a>
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     ALL TOOLS / SEO
-===================================================== -->
-
-<section id="all-tools" class="section seo-section">
-
-  <div class="section-heading center-heading">
-    <span class="section-kicker">SEO TOOL PAGES</span>
-    <h2>Find the right tool for every job.</h2>
-    <p>
-      Each SOROAI tool has its own searchable page.
-    </p>
-  </div>
-
-
-  <div class="seo-tool-list">
-
-    <a href="/tools/image-generator" class="seo-tool">
-      <span>◈</span>
-      <div>
-        <strong>AI Image Generator</strong>
-        <small>Create images from text prompts.</small>
-      </div>
-      <b>→</b>
-    </a>
-
-    <a href="/tools/ai-writer" class="seo-tool">
-      <span>✍</span>
-      <div>
-        <strong>AI Writer</strong>
-        <small>Generate high-quality written content.</small>
-      </div>
-      <b>→</b>
-    </a>
-
-    <a href="/tools/seo-analyzer" class="seo-tool">
-      <span>⌁</span>
-      <div>
-        <strong>SEO Analyzer</strong>
-        <small>Analyze your website SEO.</small>
-      </div>
-      <b>→</b>
-    </a>
-
-    <a href="/tools/video-script" class="seo-tool">
-      <span>▶</span>
-      <div>
-        <strong>AI Video Script Generator</strong>
-        <small>Create scripts for YouTube, TikTok and Reels.</small>
-      </div>
-      <b>→</b>
-    </a>
-
-    <a href="/tools/keyword-research" class="seo-tool">
-      <span>⌕</span>
-      <div>
-        <strong>Keyword Research</strong>
-        <small>Discover keyword and content opportunities.</small>
-      </div>
-      <b>→</b>
-    </a>
-
-    <a href="/tools/email-campaign" class="seo-tool">
-      <span>✉</span>
-      <div>
-        <strong>Email Campaign Generator</strong>
-        <small>Create campaign ideas and email sequences.</small>
-      </div>
-      <b>→</b>
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     PRICING
-===================================================== -->
-
-<section id="pricing" class="section pricing-section">
-
-  <div class="section-heading center-heading">
-    <span class="section-kicker">SIMPLE PRICING</span>
-    <h2>Choose your growth.</h2>
-    <p>No complicated plans. Start small and upgrade when you need more.</p>
-  </div>
-
-
-  <div class="pricing-grid">
-
-    <article class="price-card">
-
-      <div class="price-name">Starter</div>
-
-      <div class="price">
-        <span>$</span>9
-        <small>/mo</small>
-      </div>
-
-      <p>For creators starting with AI.</p>
-
-      <ul>
-        <li>✓ 20 AI tool uses</li>
-        <li>✓ Basic AI tools</li>
-        <li>✓ Tool Finder</li>
-        <li>✓ Basic history</li>
-      </ul>
-
-      <button onclick="openModal('signupModal')" class="price-btn">
-        Choose Starter
-      </button>
-
-    </article>
-
-
-    <article class="price-card popular">
-
-      <div class="popular-label">
-        MOST POPULAR
-      </div>
-
-      <div class="price-name">Pro</div>
-
-      <div class="price">
-        <span>$</span>19
-        <small>/mo</small>
-      </div>
-
-      <p>For creators and growing businesses.</p>
-
-      <ul>
-        <li>✓ 100 AI tool uses</li>
-        <li>✓ Premium tools</li>
-        <li>✓ Advanced Tool Finder</li>
-        <li>✓ Priority processing</li>
-        <li>✓ Share without limits</li>
-      </ul>
-
-      <button onclick="openModal('signupModal')" class="price-btn">
-        Choose Pro
-      </button>
-
-    </article>
-
-
-    <article class="price-card">
-
-      <div class="price-name">Premium</div>
-
-      <div class="price">
-        <span>$</span>49
-        <small>/mo</small>
-      </div>
-
-      <p>For serious creators and businesses.</p>
-
-      <ul>
-        <li>✓ Unlimited selected tools</li>
-        <li>✓ All premium features</li>
-        <li>✓ Priority AI processing</li>
-        <li>✓ Advanced analytics</li>
-        <li>✓ Commercial usage</li>
-      </ul>
-
-      <button onclick="openModal('signupModal')" class="price-btn">
-        Choose Premium
-      </button>
-
-    </article>
-
-  </div>
-
-  <div class="payment-note">
-    Payments can be connected later with Stripe, PayPal or supported gateways.
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     BLOG / SEO CONTENT
-===================================================== -->
-
-<section id="blog" class="section blog-section">
-
-  <div class="section-heading">
-    <div>
-      <span class="section-kicker">AI INSIGHTS</span>
-      <h2>Learn. Build. Grow.</h2>
-    </div>
-  </div>
-
-  <div class="blog-grid">
-
-    <article class="blog-card">
-      <span>AI TOOLS</span>
-      <h3>How to choose the right AI tool for your business</h3>
-      <p>
-        A simple framework for comparing AI tools based on your actual goal,
-        budget and workflow.
-      </p>
-      <a href="#">Read article →</a>
-    </article>
-
-    <article class="blog-card">
-      <span>PRODUCTIVITY</span>
-      <h3>10 ways AI can save hours every week</h3>
-      <p>
-        Discover practical AI workflows for content, research and repetitive tasks.
-      </p>
-      <a href="#">Read article →</a>
-    </article>
-
-    <article class="blog-card">
-      <span>MONETIZATION</span>
-      <h3>How AI affiliate marketing works</h3>
-      <p>
-        Learn the basic model behind recommending useful AI products online.
-      </p>
-      <a href="#">Read article →</a>
-    </article>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- =====================================================
-     SOROAI ASSISTANT
-===================================================== -->
-
-<div id="assistant" class="assistant">
-
-  <button class="assistant-head" onclick="toggleAssistant()">
-    <span class="assistant-avatar">S</span>
-
-    <span>
-      <strong>SOROAI Assistant</strong>
-      <small>AI Tool Finder</small>
-    </span>
-
-    <span id="assistantArrow">⌃</span>
-  </button>
-
-
-  <div id="assistantBody" class="assistant-body">
-
-    <div id="chatMessages" class="chat-messages">
-
-      <div class="bot-message">
-        Hi 👋 I'm SOROAI Assistant.<br>
-        Tell me what you want to create or solve.
-      </div>
-
-    </div>
-
-    <div class="chat-input">
-      <input
-        id="chatInput"
-        type="text"
-        placeholder="I need a logo maker..."
-        onkeydown="if(event.key==='Enter')sendChat()"
-      >
-
-      <button onclick="sendChat()">→</button>
-    </div>
-
-  </div>
 
 </div>
 
 
 <!-- =====================================================
-     LOGIN MODAL
+     JAVASCRIPT
 ===================================================== -->
 
-<div id="loginModal" class="modal">
+<script>
 
-  <div class="modal-box">
+  /* =====================================================
+     THEME
+  ===================================================== */
 
-    <button class="close-modal" onclick="closeModal('loginModal')">
-      ×
-    </button>
+  const themeToggle =
+    document.getElementById("themeToggle");
 
-    <div class="modal-logo">S</div>
-
-    <h2>Welcome back</h2>
-    <p>Login to your SOROAI account.</p>
-
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-
-    <button class="gold-btn full-btn">
-      Login
-    </button>
-
-    <small>
-      Demo UI — connect authentication later.
-    </small>
-
-  </div>
-
-</div>
+  const themeKnob =
+    document.getElementById("themeKnob");
 
 
-<!-- =====================================================
-     SIGNUP MODAL
-===================================================== -->
-
-<div id="signupModal" class="modal">
-
-  <div class="modal-box">
-
-    <button class="close-modal" onclick="closeModal('signupModal')">
-      ×
-    </button>
-
-    <div class="modal-logo">S</div>
-
-    <h2>Start with SOROAI</h2>
-    <p>Create your free account.</p>
-
-    <input type="text" placeholder="Your name">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Create password">
-
-    <button class="gold-btn full-btn">
-      Create Account
-    </button>
-
-    <small>
-      Demo UI — connect authentication later.
-    </small>
-
-  </div>
-
-</div>
+  const savedTheme =
+    localStorage.getItem("soroai-theme");
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+  if (savedTheme === "light") {
 
-<footer>
+    document.body.classList.add("light");
 
-  <div class="footer-inner">
+    themeKnob.textContent = "☀";
 
-    <div>
-      <a href="#home" class="brand">
-        <span class="brand-mark">S</span>
-        <span>SOROAI</span>
-      </a>
-
-      <p>
-        AI tools, discovery and growth — all in one place.
-      </p>
-    </div>
-
-    <div class="footer-links">
-      <a href="#tools">Tools</a>
-      <a href="#earn">Earn with AI</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#blog">Blog</a>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-    </div>
-
-  </div>
-
-  <div class="copyright">
-    © 2026 SOROAI. All rights reserved.
-  </div>
-
-</footer>
+  }
 
 
-<script src="script.js"></script>
+  themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light");
+
+
+    const light =
+      document.body.classList.contains("light");
+
+
+    localStorage.setItem(
+      "soroai-theme",
+      light ? "light" : "dark"
+    );
+
+
+    themeKnob.textContent =
+      light ? "☀" : "☾";
+
+  });
+
+
+
+  /* =====================================================
+     MOBILE MENU
+  ===================================================== */
+
+  const mobileButton =
+    document.getElementById("mobileButton");
+
+  const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+  mobileButton.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("open");
+
+  });
+
+
+  document
+    .querySelectorAll("#mobileMenu a")
+    .forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("open");
+
+      });
+
+    });
+
+
+
+  /* =====================================================
+     PARTICLE NETWORK
+  ===================================================== */
+
+  const canvas =
+    document.getElementById("particleCanvas");
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  let particles = [];
+
+  let width = 0;
+  let height = 0;
+
+
+  function resizeCanvas() {
+
+    width =
+      canvas.width =
+      window.innerWidth *
+      window.devicePixelRatio;
+
+    height =
+      canvas.height =
+      window.innerHeight *
+      window.devicePixelRatio;
+
+
+    canvas.style.width =
+      window.innerWidth + "px";
+
+    canvas.style.height =
+      window.innerHeight + "px";
+
+
+    ctx.setTransform(
+      window.devicePixelRatio,
+      0,
+      0,
+      window.devicePixelRatio,
+      0,
+      0
+    );
+
+
+    createParticles();
+
+  }
+
+
+  function createParticles() {
+
+    particles = [];
+
+
+    const count =
+      window.innerWidth < 700
+        ? 45
+        : 85;
+
+
+    for (let i = 0; i < count; i++) {
+
+      particles.push({
+
+        x:
+          Math.random() *
+          window.innerWidth,
+
+        y:
+          Math.random() *
+          window.innerHeight,
+
+        vx:
+          (Math.random() - .5) *
+          .18,
+
+        vy:
+          (Math.random() - .5) *
+          .18,
+
+        r:
+          Math.random() *
+          1.4 + .45,
+
+        alpha:
+          Math.random() *
+          .45 + .12
+
+      });
+
+    }
+
+  }
+
+
+  function drawParticles() {
+
+    ctx.clearRect(
+      0,
+      0,
+      window.innerWidth,
+      window.innerHeight
+    );
+
+
+    const dark =
+      !document.body.classList.contains("light");
+
+
+    const dotAlpha =
+      dark ? 1 : .45;
+
+
+    /* DOTS */
+
+    particles.forEach(p => {
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+
+      if (p.x < -20)
+        p.x = window.innerWidth + 20;
+
+      if (p.x > window.innerWidth + 20)
+        p.x = -20;
+
+      if (p.y < -20)
+        p.y = window.innerHeight + 20;
+
+      if (p.y > window.innerHeight + 20)
+        p.y = -20;
+
+
+      ctx.beginPath();
+
+      ctx.arc(
+        p.x,
+        p.y,
+        p.r,
+        0,
+        Math.PI * 2
+      );
+
+
+      ctx.fillStyle =
+        `rgba(212,175,55,${p.alpha * dotAlpha})`;
+
+      ctx.fill();
+
+    });
+
+
+    /* CONNECTIONS */
+
+    for (
+      let i = 0;
+      i < particles.length;
+      i++
+    ) {
+
+      for (
+        let j = i + 1;
+        j < particles.length;
+        j++
+      ) {
+
+        const a =
+          particles[i];
+
+        const b =
+          particles[j];
+
+
+        const dx =
+          a.x - b.x;
+
+        const dy =
+          a.y - b.y;
+
+
+        const distance =
+          Math.sqrt(
+            dx * dx +
+            dy * dy
+          );
+
+
+        if (distance < 145) {
+
+          const opacity =
+            (1 - distance / 145)
+            * .11
+            * dotAlpha;
+
+
+          ctx.beginPath();
+
+          ctx.moveTo(
+            a.x,
+            a.y
+          );
+
+          ctx.lineTo(
+            b.x,
+            b.y
+          );
+
+
+          ctx.strokeStyle =
+            `rgba(212,175,55,${opacity})`;
+
+          ctx.lineWidth = .6;
+
+          ctx.stroke();
+
+        }
+
+      }
+
+    }
+
+
+    requestAnimationFrame(
+      drawParticles
+    );
+
+  }
+
+
+  window.addEventListener(
+    "resize",
+    resizeCanvas
+  );
+
+
+  resizeCanvas();
+
+  drawParticles();
+
+
+</script>
 
 </body>
 </html>
