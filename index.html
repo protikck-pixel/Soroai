@@ -1,1 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>SOROAI — AI Tools, Automation & Growth</title>
+  <meta name="description" content="SOROAI helps you discover, create and grow with AI. Explore AI tools, generators, automation and the best AI services.">
+  <meta name="keywords" content="AI tools, AI generator, AI assistant, AI tools directory, AI automation">
+
+  <meta property="og:title" content="SOROAI — Earn with AI. Build Faster.">
+  <meta property="og:description" content="Discover AI tools, create faster and grow with SOROAI.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+  <div class="nav-inner">
+
+    <a href="#home" class="brand">
+      <span class="brand-mark">S</span>
+      <span>SOROAI</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="#earn">Earn with AI</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#blog">Blog</a>
+    </nav>
+
+    <div class="nav-actions">
+
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+        ◐
+      </button>
+
+      <button class="login-btn" onclick="openModal('loginModal')">
+        Login
+      </button>
+
+      <button class="primary-btn" onclick="openModal('signupModal')">
+        Get Started
+      </button>
+
+      <button id="mobileMenuBtn" class="mobile-menu-btn">
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#tools">Tools</a>
+    <a href="#earn">Earn with AI</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#blog">Blog</a>
+    <button onclick="openModal('loginModal')">Login</button>
+    <button onclick="openModal('signupModal')">Get Started</button>
+  </div>
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main id="home">
+
+<section class="hero">
+
+  <div class="hero-glow glow-one"></div>
+  <div class="hero-glow glow-two"></div>
+
+  <div class="country-bar">
+    <span>🌐 All Countries</span>
+    <span>🇺🇸</span>
+    <span>🇬🇧</span>
+    <span>🇮🇳</span>
+    <span>🇧🇩</span>
+    <span>🇨🇦</span>
+    <span>🇦🇺</span>
+  </div>
+
+  <div class="hero-grid">
+
+    <div class="hero-copy">
+
+      <div class="eyebrow">
+        ✦ AI TOOLS & GROWTH PLATFORM
+      </div>
+
+      <h1>
+        Earn with AI.<br>
+        <span>Build Faster.</span>
+      </h1>
+
+      <p>
+        Discover powerful AI tools, create content, automate work,
+        and find the right AI solution for your next idea.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#tools" class="gold-btn">
+          Explore AI Tools →
+        </a>
+
+        <a href="#earn" class="dark-outline-btn">
+          Earn with AI ↗
+        </a>
+      </div>
+
+      <div class="trust-line">
+        Trusted by creators, entrepreneurs & digital builders.
+      </div>
+
+    </div>
+
+
+    <!-- BEFORE AFTER -->
+
+    <div class="before-after-card">
+
+      <div class="card-label">
+        Before → After | Image Generator Demo
+      </div>
+
+      <div class="before-after">
+
+        <div class="demo-side">
+          <span>Before</span>
+          <div class="fake-image before-image">
+            <div class="bottle"></div>
+          </div>
+        </div>
+
+        <div class="arrow-circle">
+          ✦
+        </div>
+
+        <div class="demo-side">
+          <span>After</span>
+          <div class="fake-image after-image">
+            <div class="s-logo">S</div>
+            <small>Made with SOROAI</small>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="share-demo-btn" onclick="shareContent('SOROAI Image Generator Demo')">
+        Share on X ↗
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ONE BOX -->
+
+  <div class="one-box">
+
+    <div class="one-box-top">
+      <span class="one-box-label">SOROAI ONE BOX</span>
+      <span class="online-dot">● Online</span>
+    </div>
+
+    <h2>Tell us. We'll figure it out.</h2>
+
+    <p>
+      Describe what you need and SOROAI will help you find the right AI tool.
+    </p>
+
+    <div class="one-box-input">
+
+      <input
+        id="toolSearch"
+        type="text"
+        placeholder="I need a logo maker..."
+        onkeydown="if(event.key==='Enter')findTool()"
+      >
+
+      <button onclick="findTool()">
+        Find Tool →
+      </button>
+
+    </div>
+
+    <div id="finderResult" class="finder-result"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     TOOLS
+===================================================== -->
+
+<section id="tools" class="section">
+
+  <div class="section-heading">
+    <div>
+      <span class="section-kicker">POPULAR TOOLS</span>
+      <h2>AI tools that do the work.</h2>
+    </div>
+
+    <a href="#all-tools" class="view-all">
+      View all tools →
+    </a>
+  </div>
+
+
+  <div class="tools-grid">
+
+    <article class="tool-card">
+      <div class="tool-icon">✍</div>
+      <h3>AI Writer</h3>
+      <p>Write blogs, ads, captions and content in seconds.</p>
+      <a href="/tools/ai-writer">Open Tool →</a>
+    </article>
+
+    <article class="tool-card">
+      <div class="tool-icon">⌁</div>
+      <h3>SEO Analyzer</h3>
+      <p>Audit a website and discover SEO opportunities.</p>
+      <a href="/tools/seo-analyzer">Open Tool →</a>
+    </article>
+
+    <article class="tool-card">
+      <div class="tool-icon">◈</div>
+      <h3>Image Generator</h3>
+      <p>Create images from simple text prompts.</p>
+      <a href="/tools/image-generator">Open Tool →</a>
+    </article>
+
+    <article class="tool-card">
+      <div class="tool-icon">▶</div>
+      <h3>Video Script</h3>
+      <p>Generate engaging scripts for short videos.</p>
+      <a href="/tools/video-script">Open Tool →</a>
+    </article>
+
+    <article class="tool-card">
+      <div class="tool-icon">⌕</div>
+      <h3>Keyword Research</h3>
+      <p>Find profitable keywords and content ideas.</p>
+      <a href="/tools/keyword-research">Open Tool →</a>
+    </article>
+
+    <article class="tool-card">
+      <div class="tool-icon">✉</div>
+      <h3>Email Campaign</h3>
+      <p>Create better emails and campaign ideas.</p>
+      <a href="/tools/email-campaign">Open Tool →</a>
+    </article>
+
+  </div>
+
+  <div class="more-tools">
+    +34 more tools available →
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     EARN WITH AI
+===================================================== -->
+
+<section id="earn" class="section earn-section">
+
+  <div class="section-heading center-heading">
+    <span class="section-kicker">AFFILIATE STORE</span>
+    <h2>Earn with AI.</h2>
+    <p>
+      Recommend useful AI products and earn recurring commissions.
+    </p>
+  </div>
+
+
+  <div class="affiliate-grid">
+
+    <article class="affiliate-card">
+      <div class="affiliate-top">
+        <span class="affiliate-logo">J</span>
+        <span class="commission">30%</span>
+      </div>
+
+      <h3>Jasper</h3>
+
+      <p>
+        AI platform for marketing, content and business teams.
+      </p>
+
+      <div class="affiliate-note">
+        Example commission
+      </div>
+
+      <a
+        href="YOUR_JASPER_AFFILIATE_LINK"
+        target="_blank"
+        rel="nofollow sponsored"
+        class="affiliate-btn"
+      >
+        Try Jasper →
+      </a>
+    </article>
+
+
+    <article class="affiliate-card">
+      <div class="affiliate-top">
+        <span class="affiliate-logo">W</span>
+        <span class="commission">30%</span>
+      </div>
+
+      <h3>Writesonic</h3>
+
+      <p>
+        AI writing and marketing platform for modern businesses.
+      </p>
+
+      <div class="affiliate-note">
+        Example commission
+      </div>
+
+      <a
+        href="YOUR_WRITESONIC_AFFILIATE_LINK"
+        target="_blank"
+        rel="nofollow sponsored"
+        class="affiliate-btn"
+      >
+        Try Writesonic →
+      </a>
+    </article>
+
+
+    <article class="affiliate-card">
+      <div class="affiliate-top">
+        <span class="affiliate-logo">P</span>
+        <span class="commission">50%</span>
+      </div>
+
+      <h3>Pictory</h3>
+
+      <p>
+        Turn text and ideas into engaging AI-powered videos.
+      </p>
+
+      <div class="affiliate-note">
+        Example commission
+      </div>
+
+      <a
+        href="YOUR_PICTORY_AFFILIATE_LINK"
+        target="_blank"
+        rel="nofollow sponsored"
+        class="affiliate-btn"
+      >
+        Try Pictory →
+      </a>
+    </article>
+
+
+    <article class="affiliate-card">
+      <div class="affiliate-top">
+        <span class="affiliate-logo">M</span>
+        <span class="commission">20%</span>
+      </div>
+
+      <h3>Murf</h3>
+
+      <p>
+        Create professional AI voiceovers for videos and content.
+      </p>
+
+      <div class="affiliate-note">
+        Example commission
+      </div>
+
+      <a
+        href="YOUR_MURF_AFFILIATE_LINK"
+        target="_blank"
+        rel="nofollow sponsored"
+        class="affiliate-btn"
+      >
+        Try Murf →
+      </a>
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ALL TOOLS / SEO
+===================================================== -->
+
+<section id="all-tools" class="section seo-section">
+
+  <div class="section-heading center-heading">
+    <span class="section-kicker">SEO TOOL PAGES</span>
+    <h2>Find the right tool for every job.</h2>
+    <p>
+      Each SOROAI tool has its own searchable page.
+    </p>
+  </div>
+
+
+  <div class="seo-tool-list">
+
+    <a href="/tools/image-generator" class="seo-tool">
+      <span>◈</span>
+      <div>
+        <strong>AI Image Generator</strong>
+        <small>Create images from text prompts.</small>
+      </div>
+      <b>→</b>
+    </a>
+
+    <a href="/tools/ai-writer" class="seo-tool">
+      <span>✍</span>
+      <div>
+        <strong>AI Writer</strong>
+        <small>Generate high-quality written content.</small>
+      </div>
+      <b>→</b>
+    </a>
+
+    <a href="/tools/seo-analyzer" class="seo-tool">
+      <span>⌁</span>
+      <div>
+        <strong>SEO Analyzer</strong>
+        <small>Analyze your website SEO.</small>
+      </div>
+      <b>→</b>
+    </a>
+
+    <a href="/tools/video-script" class="seo-tool">
+      <span>▶</span>
+      <div>
+        <strong>AI Video Script Generator</strong>
+        <small>Create scripts for YouTube, TikTok and Reels.</small>
+      </div>
+      <b>→</b>
+    </a>
+
+    <a href="/tools/keyword-research" class="seo-tool">
+      <span>⌕</span>
+      <div>
+        <strong>Keyword Research</strong>
+        <small>Discover keyword and content opportunities.</small>
+      </div>
+      <b>→</b>
+    </a>
+
+    <a href="/tools/email-campaign" class="seo-tool">
+      <span>✉</span>
+      <div>
+        <strong>Email Campaign Generator</strong>
+        <small>Create campaign ideas and email sequences.</small>
+      </div>
+      <b>→</b>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRICING
+===================================================== -->
+
+<section id="pricing" class="section pricing-section">
+
+  <div class="section-heading center-heading">
+    <span class="section-kicker">SIMPLE PRICING</span>
+    <h2>Choose your growth.</h2>
+    <p>No complicated plans. Start small and upgrade when you need more.</p>
+  </div>
+
+
+  <div class="pricing-grid">
+
+    <article class="price-card">
+
+      <div class="price-name">Starter</div>
+
+      <div class="price">
+        <span>$</span>9
+        <small>/mo</small>
+      </div>
+
+      <p>For creators starting with AI.</p>
+
+      <ul>
+        <li>✓ 20 AI tool uses</li>
+        <li>✓ Basic AI tools</li>
+        <li>✓ Tool Finder</li>
+        <li>✓ Basic history</li>
+      </ul>
+
+      <button onclick="openModal('signupModal')" class="price-btn">
+        Choose Starter
+      </button>
+
+    </article>
+
+
+    <article class="price-card popular">
+
+      <div class="popular-label">
+        MOST POPULAR
+      </div>
+
+      <div class="price-name">Pro</div>
+
+      <div class="price">
+        <span>$</span>19
+        <small>/mo</small>
+      </div>
+
+      <p>For creators and growing businesses.</p>
+
+      <ul>
+        <li>✓ 100 AI tool uses</li>
+        <li>✓ Premium tools</li>
+        <li>✓ Advanced Tool Finder</li>
+        <li>✓ Priority processing</li>
+        <li>✓ Share without limits</li>
+      </ul>
+
+      <button onclick="openModal('signupModal')" class="price-btn">
+        Choose Pro
+      </button>
+
+    </article>
+
+
+    <article class="price-card">
+
+      <div class="price-name">Premium</div>
+
+      <div class="price">
+        <span>$</span>49
+        <small>/mo</small>
+      </div>
+
+      <p>For serious creators and businesses.</p>
+
+      <ul>
+        <li>✓ Unlimited selected tools</li>
+        <li>✓ All premium features</li>
+        <li>✓ Priority AI processing</li>
+        <li>✓ Advanced analytics</li>
+        <li>✓ Commercial usage</li>
+      </ul>
+
+      <button onclick="openModal('signupModal')" class="price-btn">
+        Choose Premium
+      </button>
+
+    </article>
+
+  </div>
+
+  <div class="payment-note">
+    Payments can be connected later with Stripe, PayPal or supported gateways.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     BLOG / SEO CONTENT
+===================================================== -->
+
+<section id="blog" class="section blog-section">
+
+  <div class="section-heading">
+    <div>
+      <span class="section-kicker">AI INSIGHTS</span>
+      <h2>Learn. Build. Grow.</h2>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+
+    <article class="blog-card">
+      <span>AI TOOLS</span>
+      <h3>How to choose the right AI tool for your business</h3>
+      <p>
+        A simple framework for comparing AI tools based on your actual goal,
+        budget and workflow.
+      </p>
+      <a href="#">Read article →</a>
+    </article>
+
+    <article class="blog-card">
+      <span>PRODUCTIVITY</span>
+      <h3>10 ways AI can save hours every week</h3>
+      <p>
+        Discover practical AI workflows for content, research and repetitive tasks.
+      </p>
+      <a href="#">Read article →</a>
+    </article>
+
+    <article class="blog-card">
+      <span>MONETIZATION</span>
+      <h3>How AI affiliate marketing works</h3>
+      <p>
+        Learn the basic model behind recommending useful AI products online.
+      </p>
+      <a href="#">Read article →</a>
+    </article>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     SOROAI ASSISTANT
+===================================================== -->
+
+<div id="assistant" class="assistant">
+
+  <button class="assistant-head" onclick="toggleAssistant()">
+    <span class="assistant-avatar">S</span>
+
+    <span>
+      <strong>SOROAI Assistant</strong>
+      <small>AI Tool Finder</small>
+    </span>
+
+    <span id="assistantArrow">⌃</span>
+  </button>
+
+
+  <div id="assistantBody" class="assistant-body">
+
+    <div id="chatMessages" class="chat-messages">
+
+      <div class="bot-message">
+        Hi 👋 I'm SOROAI Assistant.<br>
+        Tell me what you want to create or solve.
+      </div>
+
+    </div>
+
+    <div class="chat-input">
+      <input
+        id="chatInput"
+        type="text"
+        placeholder="I need a logo maker..."
+        onkeydown="if(event.key==='Enter')sendChat()"
+      >
+
+      <button onclick="sendChat()">→</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
+
+<div id="loginModal" class="modal">
+
+  <div class="modal-box">
+
+    <button class="close-modal" onclick="closeModal('loginModal')">
+      ×
+    </button>
+
+    <div class="modal-logo">S</div>
+
+    <h2>Welcome back</h2>
+    <p>Login to your SOROAI account.</p>
+
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+
+    <button class="gold-btn full-btn">
+      Login
+    </button>
+
+    <small>
+      Demo UI — connect authentication later.
+    </small>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     SIGNUP MODAL
+===================================================== -->
+
+<div id="signupModal" class="modal">
+
+  <div class="modal-box">
+
+    <button class="close-modal" onclick="closeModal('signupModal')">
+      ×
+    </button>
+
+    <div class="modal-logo">S</div>
+
+    <h2>Start with SOROAI</h2>
+    <p>Create your free account.</p>
+
+    <input type="text" placeholder="Your name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Create password">
+
+    <button class="gold-btn full-btn">
+      Create Account
+    </button>
+
+    <small>
+      Demo UI — connect authentication later.
+    </small>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div>
+      <a href="#home" class="brand">
+        <span class="brand-mark">S</span>
+        <span>SOROAI</span>
+      </a>
+
+      <p>
+        AI tools, discovery and growth — all in one place.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#tools">Tools</a>
+      <a href="#earn">Earn with AI</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#blog">Blog</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 SOROAI. All rights reserved.
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
